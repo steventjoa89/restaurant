@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import FooterTotalOrder from "../../components/Order/FooterTotalOrder";
-import { Navbar, Sidebar } from "flowbite-react";
-import { Link } from "react-router-dom";
+import NavbarOrder from "../../components/Order/NavbarOrder";
 
 function OrderPage() {
   const [total, setTotal] = useState(0);
@@ -9,43 +8,25 @@ function OrderPage() {
   return (
     <>
       {/* Navbar */}
-      <Navbar fluid rounded>
-        <Navbar.Brand as={Link} href="https://flowbite-react.com">
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Flowbite React
-          </span>
-        </Navbar.Brand>
-        <Navbar.Collapse>
-          <Navbar.Link href="#" active>
-            Home
-          </Navbar.Link>
-          <Navbar.Link as={Link} href="#">
-            About
-          </Navbar.Link>
-          <Navbar.Link href="#">Services</Navbar.Link>
-          <Navbar.Link href="#">Pricing</Navbar.Link>
-          <Navbar.Link href="#">Contact</Navbar.Link>
-        </Navbar.Collapse>
-      </Navbar>
+      <NavbarOrder />
 
-      <button
+      {/* <button
         onClick={() => {
           setTotal(total + 10);
         }}
       >
         click me
-      </button>
+      </button> */}
 
       {/* Sidebar */}
-      <Sidebar className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+      {/* <Sidebar
+        className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        aria-label="Sidebar"
+      >
         <Sidebar.Items>
           <Sidebar.ItemGroup>
             <Sidebar.Item href="#">Dashboard</Sidebar.Item>
-            <Sidebar.Item
-              href="#"
-              label="Pro"
-              labelColor="dark"
-            >
+            <Sidebar.Item href="#" label="Pro" labelColor="dark">
               Kanban
             </Sidebar.Item>
             <Sidebar.Item href="#" label="3">
@@ -57,7 +38,7 @@ function OrderPage() {
             <Sidebar.Item href="#">Sign Up</Sidebar.Item>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
-      </Sidebar>
+      </Sidebar> */}
 
       {/* Footer Total Order Price */}
       <FooterTotalOrder total={total} />
