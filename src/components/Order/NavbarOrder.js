@@ -1,14 +1,15 @@
-import { Navbar } from "flowbite-react";
 import React from "react";
-import {
-  RESTAURANT_LOGO_ADDRESS_URL,
-  RESTAURANT_NAME,
-} from "../../constants/constant";
+import { Navbar } from "flowbite-react";
+import { RESTAURANT_LOGO_ADDRESS_URL, RESTAURANT_NAME } from "../../data/info";
 
 function NavbarOrder() {
   return (
-    <Navbar fluid rounded className="pt-3 border-b border-gray-300">
-      <Navbar.Brand >
+    <Navbar
+      fluid
+      rounded
+      className="pt-3 border-b border-gray-300 hidden md:block"
+    >
+      <Navbar.Brand>
         <img
           src={RESTAURANT_LOGO_ADDRESS_URL}
           className="mr-3 h-6 sm:h-9"

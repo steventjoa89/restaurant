@@ -1,15 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/HomePage";
-import OrderPage from "./pages/OrderPage";
+import OrderPage from "./pages/Order";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<HomePage />} /> {/* Admin Page */}
-          <Route path="/order" element={<OrderPage />} />   {/* Guest Menu Order Page */}
+          <Route path="/" element={<OrderPage />} /> {/* Customer Order Page */}
         </Routes>
       </div>
     </Router>
