@@ -32,7 +32,7 @@ function MenuCard({
             />
           )}
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row mt-1 mb-2">
           {/* <CardSubtitle text="Price Per Portion" /> */}
           <CardAmountPrice amount={price} />
         </div>
