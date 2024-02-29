@@ -15,12 +15,6 @@ function PaymentSummary() {
         textWeight="bold"
         value={convertAmountNumberToString(123456789)}
       />
-
-      <div className="flex mt-3">
-        <Button className="flex-grow" color="dark" pill>
-          <span>Order Now</span>
-        </Button>
-      </div>
     </>
   );
 }

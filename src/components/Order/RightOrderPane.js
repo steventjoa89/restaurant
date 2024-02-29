@@ -2,6 +2,7 @@ import React from "react";
 import HeadingRow from "../HeadingRow";
 import PaymentSummary from "./PaymentSummary";
 import OrderSummary from "./OrderSummary";
+import { Button } from "flowbite-react";
 
 function RightOrderPane() {
   return (
@@ -11,6 +12,12 @@ function RightOrderPane() {
 
       <HeadingRow text="Payment Summary" />
       <PaymentSummary />
+
+      <div className="flex mt-3">
+        <Button className="flex-grow" color="dark" pill>
+          <span>Order Now</span>
+        </Button>
+      </div>
     </div>
   );
 }
