@@ -9,7 +9,7 @@ function OrderCard() {
         <img
           src="/images/peperoni.jfif"
           alt="peperoni"
-          className="w-20 h-20 rounded-lg shadow-md"
+          className="w-20 h-20 rounded-lg shadow-md object-cover"
         />
         <div className="flex-1 flex flex-col pl-3">
           <div className="flex flex-row">
