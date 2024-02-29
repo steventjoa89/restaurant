@@ -1,5 +1,6 @@
 import React from "react";
-import IncDecButton from "../IncDecButton";
+import IncDecButton from "./IncDecButton";
+import CardTitle from "./CardTitle";
 
 function OrderCard() {
   return (
@@ -12,9 +13,7 @@ function OrderCard() {
         />
         <div className="flex-1 flex flex-col pl-3">
           <div className="flex flex-row">
-            <div className="text-xs font-bold tracking-tight text-gray-900 dark:text-white">
-              Japanese Chicken Gyoza
-            </div>
+            <CardTitle text="Japanese Chicken Gyoza" />
           </div>
           <div className="flex flex-row">
             <div className="text-xs font-bold tracking-tight text-green-500 dark:text-white">
@@ -31,7 +30,6 @@ function OrderCard() {
                 </span>
                 <IncDecButton />
               </div>
-              {/* TODO: Recycle bin icon */}
               <span>x</span>
             </div>
           </div>
