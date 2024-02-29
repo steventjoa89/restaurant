@@ -1,29 +1,40 @@
 import React from "react";
 import CardTitle from "./CardTitle";
-import CardSubtitle from "./CardSubtitle";
-import { Button } from "flowbite-react";
+import CardAmountPrice from "./CardAmountPrice";
 import Counter from "./Counter";
 import CardDisountSubtitle from "./CardDisountSubtitle";
 
-function MenuCard() {
+function MenuCard({
+  name,
+  price,
+  image,
+  isDiscountMenu = false,
+  discount = 0,
+  priceBeforeDiscount = 0,
+}) {
   return (
     <div className="px-3 py-2 mb-2 border border-gray-200 shadow-sm rounded-lg">
       <div className="flex flex-col">
         <img
-          src="/images/peperoni.jfif"
-          alt="peperoni"
+          src={image}
+          alt={name}
           className="rounded-lg shadow-md mb-2 cursor-pointer"
         />
         <div className="flex flex-row">
-          <CardTitle text="Japanese Chicken Gyoza" />
+          <CardTitle text={name} />
         </div>
         <div className="flex flex-row">
           {/* <CardSubtitle text="Price Per Portion" /> */}
-          <CardDisountSubtitle discount={15} amount={100000} />
+          {isDiscountMenu && (
+            <CardDisountSubtitle
+              discount={discount}
+              priceBeforeDiscount={priceBeforeDiscount}
+            />
+          )}
         </div>
         <div className="flex flex-row">
           {/* <CardSubtitle text="Price Per Portion" /> */}
-          <CardTitle text="Rp 60.000,00" />
+          <CardAmountPrice amount={price} />
         </div>
         <div className="mt-auto flex justify-end">
           <div className="flex items-end">

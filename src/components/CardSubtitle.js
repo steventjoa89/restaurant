@@ -1,10 +1,8 @@
 import React from "react";
 
-function CardSubtitle({ text = "", textSize = "[0.5rem]" }) {
+function CardSubtitle({ text = "" }) {
   return (
-    <div
-      className={`text-${textSize} font-bold tracking-tight text-gray-400 dark:text-white`}
-    >
+    <div className="text-xs font-bold tracking-tight text-gray-300 dark:text-white">
       {text}
     </div>
   );
