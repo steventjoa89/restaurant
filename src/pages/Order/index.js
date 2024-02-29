@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavbarOrder from "../../components/order/NavbarOrder";
 import FooterOrder from "../../components/order/FooterOrder";
-import OrderSummary from "../../components/order/OrderSummary";
+import OrderRightPane from "../../components/order/OrderRightPane";
 
 function OrderPage() {
   const [totalItem, setTotalItem] = useState(0);
@@ -17,7 +17,7 @@ function OrderPage() {
             <div>11</div>
           ))} */}
         </div>
-        <OrderSummary />
+        <OrderRightPane />
       </div>
 
       <FooterOrder totalItem={totalItem} />

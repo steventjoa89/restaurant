@@ -5,7 +5,7 @@ import { Button } from "flowbite-react";
 
 function PaymentSummary() {
   return (
-    <div className="mr-2">
+    <>
       <ListRow text="Subtotal" value={convertAmountNumberToString(123456789)} />
       <ListRow text="Tax" value={convertAmountNumberToString(123456789)} />
       <ListRow text="Service" value={convertAmountNumberToString(123456789)} />
@@ -21,7 +21,7 @@ function PaymentSummary() {
           <span>Order Now</span>
         </Button>
       </div>
-    </div>
+    </>
   );
 }
 
