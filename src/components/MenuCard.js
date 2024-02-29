@@ -2,6 +2,7 @@ import React from "react";
 import CardTitle from "./CardTitle";
 import CardSubtitle from "./CardSubtitle";
 import { Button } from "flowbite-react";
+import Counter from "./Counter";
 
 function MenuCard() {
   return (
@@ -21,9 +22,12 @@ function MenuCard() {
         <div className="mt-auto">
           <div className="flex flex-row justify-between">
             <CardTitle text="Rp 60.000,00" />
-            <Button color="dark" pill size="xs">
+            <div className="flex-3">
+            {/* <Button color="dark" pill size="xs">
               Order
-            </Button>
+            </Button> */}
+              <Counter />
+            </div>
           </div>
         </div>
       </div>

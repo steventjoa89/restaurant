@@ -1,6 +1,7 @@
 import React from "react";
-import IncDecButton from "./IncDecButton";
+import IncButton from "./IncButton";
 import CardTitle from "./CardTitle";
+import Counter from "./Counter";
 
 function OrderCard() {
   return (
@@ -21,14 +22,9 @@ function OrderCard() {
             </div>
           </div>
           <div className="mt-auto">
-            {/* ListRow */}
             <div className="flex flex-row justify-between px-1 py-0.5">
               <div className="flex">
-                <IncDecButton isInc={false} />
-                <span className="inline-flex items-center justify-center w-8 h-5 font-bold text-xs">
-                  0
-                </span>
-                <IncDecButton />
+                <Counter />
               </div>
               <span>x</span>
             </div>
