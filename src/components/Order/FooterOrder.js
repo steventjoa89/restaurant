@@ -26,8 +26,10 @@ function FooterOrder({ totalItem = 0 }) {
       </Footer>
 
       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
-        <Modal.Body>
+        <Modal.Header className="m-0 py-1 items-center">
           <HeadingRow text="Current Order" />
+        </Modal.Header>
+        <Modal.Body>
           <OrderSummary />
           <HeadingRow text="Payment Summary" />
           <PaymentSummary />
