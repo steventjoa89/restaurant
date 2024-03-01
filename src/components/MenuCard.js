@@ -47,7 +47,7 @@ function MenuCard({
           <div className="flex items-end">
             {order ? (
               <CounterButton
-                count={order.total}
+                count={order.qty}
                 onIncClick={() => increment(id)}
                 onDecClick={() => decrement(id)}
               />

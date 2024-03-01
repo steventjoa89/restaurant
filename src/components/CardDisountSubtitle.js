@@ -1,5 +1,5 @@
 import React from "react";
-import { convertAmountNumberToString } from "../utils/stringUtils";
+import { convertAmountNumberToCurrencyString } from "../utils/stringUtils";
 
 function CardDisountSubtitle({ discount = 0, priceBeforeDiscount = 0 }) {
   return (
@@ -8,7 +8,7 @@ function CardDisountSubtitle({ discount = 0, priceBeforeDiscount = 0 }) {
         {discount}%
       </div>
       <div className="ml-1 text-xs font-bold tracking-tight text-gray-400 dark:text-white line-through">
-        {convertAmountNumberToString(priceBeforeDiscount)}
+        {convertAmountNumberToCurrencyString(priceBeforeDiscount)}
       </div>
     </>
   );

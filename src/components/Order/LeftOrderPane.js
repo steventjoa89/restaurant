@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import HeadingRow from "../HeadingRow";
 import MenuCard from "../MenuCard";
-import { useGetDishes } from "../../store/server/features/order/queries";
 import Categories from "../Categories";
 
-function LeftOrderPane() {
-  const { isLoading, error, data } = useGetDishes();
-
+function LeftOrderPane({ data }) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredData, setFilteredData] = useState(null);
 
@@ -24,8 +21,6 @@ function LeftOrderPane() {
       setFilteredData(filterData);
     }
   };
-
-  
 
   return (
     <div className="col-span-6 md:col-span-4 overflow-y-scroll h-screen hide-scrollbar mx-3 mb-20 md:mb-5">

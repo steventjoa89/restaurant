@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import NavbarOrder from "../../components/order/NavbarOrder";
 import FooterOrder from "../../components/order/FooterOrder";
 import RightOrderPane from "../../components/order/RightOrderPane";
 import LeftOrderPane from "../../components/order/LeftOrderPane";
+import { useGetDishes } from "../../store/server/features/order/queries";
 
 function OrderPage() {
-  const [totalItem, setTotalItem] = useState(0);
+  const { isLoading, error, data } = useGetDishes();
 
   return (
     <>
       <NavbarOrder />
       <div className="grid grid-cols-6 gap-3">
-        <LeftOrderPane />
-        <RightOrderPane />
+        <LeftOrderPane data={data} />
+        <RightOrderPane data={data} />
       </div>
 
-      <FooterOrder totalItem={totalItem} />
+      <FooterOrder totalItem={0} />
     </>
   );
 }

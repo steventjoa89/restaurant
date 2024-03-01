@@ -2,8 +2,9 @@ import React from "react";
 import IncButton from "./IncButton";
 import CardTitle from "./CardTitle";
 import CounterButton from "./CounterButton";
+import { convertAmountNumberToCurrencyString } from "../utils/stringUtils";
 
-function OrderCard() {
+function OrderCard({ qty, onIncClick, onDecClick, name, price }) {
   return (
     <div className="px-3 py-2 mb-2 border border-gray-200 shadow-md rounded-lg">
       <div className="flex">
@@ -14,17 +15,21 @@ function OrderCard() {
         />
         <div className="flex-1 flex flex-col pl-3">
           <div className="flex flex-row">
-            <CardTitle text="Japanese Chicken Gyoza" />
+            <CardTitle text={name} />
           </div>
           <div className="flex flex-row">
             <div className="text-xs font-bold tracking-tight text-green-500 dark:text-white">
-              Rp. 10.000,00
+              {convertAmountNumberToCurrencyString(price)}
             </div>
           </div>
           <div className="mt-auto">
             <div className="flex flex-row justify-between px-1 py-0.5">
               <div className="flex">
-                <CounterButton />
+                <CounterButton
+                  count={qty}
+                  onIncClick={onIncClick}
+                  onDecClick={onDecClick}
+                />
               </div>
               <span>x</span>
             </div>
