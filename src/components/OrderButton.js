@@ -3,7 +3,7 @@ import React from "react";
 
 function OrderButton({ onClick }) {
   return (
-    <Button color="dark" pill size="xs" onClick={onClick}>
+    <Button color="dark" pill size="xs" onClick={onClick} className="h-7">
       Order
     </Button>
   );

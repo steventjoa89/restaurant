@@ -6,16 +6,18 @@ import CardDisountSubtitle from "./CardDisountSubtitle";
 import OrderButton from "./OrderButton";
 import useOrderStore from "../store/client/useOrderStore";
 
-function MenuCard({
-  id,
-  name,
-  price,
-  image,
-  isDiscountMenu = false,
-  discount = 0,
-  priceBeforeDiscount = 0,
-}) {
+function MenuCard(menu) {
   const { orders, increment, decrement } = useOrderStore();
+
+  const {
+    id,
+    name,
+    price,
+    image,
+    isDiscountMenu = false,
+    discount = 0,
+    priceBeforeDiscount = 0,
+  } = menu;
 
   const order = orders.find((order) => order.id === id);
 
@@ -48,11 +50,11 @@ function MenuCard({
             {order ? (
               <CounterButton
                 count={order.qty}
-                onIncClick={() => increment(id)}
-                onDecClick={() => decrement(id)}
+                onIncClick={() => increment(menu)}
+                onDecClick={() => decrement(menu)}
               />
             ) : (
-              <OrderButton onClick={() => increment(id)} />
+              <OrderButton onClick={() => increment(menu)} />
             )}
           </div>
         </div>

@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import HeadingRow from "../HeadingRow";
 import MenuCard from "../MenuCard";
 import Categories from "../Categories";
+import { useGetAllMenu } from "../../store/server/features/order/queries";
 
-function LeftOrderPane({ data }) {
+function LeftOrderPane() {
+  const { isLoading, error, data } = useGetAllMenu();
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredData, setFilteredData] = useState(null);
 
+  // Categories Filter
   const handleCategoryClick = (category) => {
     // Show all data
     if (category === "All") {

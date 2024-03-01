@@ -2,8 +2,9 @@ import React from "react";
 import OrderCard from "../OrderCard";
 import useOrderStore from "../../store/client/useOrderStore";
 
-function OrderSummary({ data }) {
+function OrderSummary() {
   const { orders, increment, decrement } = useOrderStore();
+
   return (
     <div
       className="overflow-y-scroll h-screen hide-scrollbar"
@@ -14,9 +15,8 @@ function OrderSummary({ data }) {
           <OrderCard
             key={i}
             {...order}
-            onIncClick={() => increment(order.id)}
-            onDecClick={() => decrement(order.id)}
-            {...data.menu.find((dt) => dt.id === order.id)}
+            onIncClick={() => increment(order)}
+            onDecClick={() => decrement(order)}
           />
         ))
       ) : (

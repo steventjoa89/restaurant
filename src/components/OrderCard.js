@@ -4,13 +4,13 @@ import CardTitle from "./CardTitle";
 import CounterButton from "./CounterButton";
 import { convertAmountNumberToCurrencyString } from "../utils/stringUtils";
 
-function OrderCard({ qty, onIncClick, onDecClick, name, price }) {
+function OrderCard({ qty, name, price, image, onIncClick, onDecClick }) {
   return (
     <div className="px-3 py-2 mb-2 border border-gray-200 shadow-md rounded-lg">
       <div className="flex">
         <img
-          src="/images/peperoni.jfif"
-          alt="peperoni"
+          src={image}
+          alt={name}
           className="w-20 h-20 rounded-lg shadow-md object-cover"
         />
         <div className="flex-1 flex flex-col pl-3">

@@ -1,11 +1,13 @@
 import React from "react";
 import ListRow from "../ListRow";
 import { convertAmountNumberToCurrencyString } from "../../utils/stringUtils";
+import useOrderStore from "../../store/client/useOrderStore";
 
-function PaymentSummary({ data, orders }) {
+function PaymentSummary() {
+  const { orders } = useOrderStore();
+
   const subTotal = orders.reduce(
-    (total, order) =>
-      total + order.qty * data.menu.find((mn) => mn.id === order.id).price,
+    (total, order) => total + order.price * order.qty,
     0
   );
   const taxFee = (subTotal * 10) / 100;
@@ -14,9 +16,15 @@ function PaymentSummary({ data, orders }) {
 
   return (
     <>
-      <ListRow text="Subtotal" value={convertAmountNumberToCurrencyString(subTotal)} />
+      <ListRow
+        text="Subtotal"
+        value={convertAmountNumberToCurrencyString(subTotal)}
+      />
       <ListRow text="Tax" value={convertAmountNumberToCurrencyString(taxFee)} />
-      <ListRow text="Service" value={convertAmountNumberToCurrencyString(serviceFee)} />
+      <ListRow
+        text="Service"
+        value={convertAmountNumberToCurrencyString(serviceFee)}
+      />
       <hr className="my-2 border-gray-100" />
       <ListRow
         text="Total"
