@@ -1,16 +1,16 @@
 import React from "react";
 import IncButton from "./IncButton";
 
-function Counter() {
+function CounterButton({ count, onIncClick, onDecClick }) {
   return (
     <>
-      <IncButton isInc={false} />
+      <IncButton isInc={false} onClick={onDecClick} />
       <span className="inline-flex items-center justify-center w-8 h-6 font-bold text-xs">
-        0
+        {count}
       </span>
-      <IncButton />
+      <IncButton onClick={onIncClick} />
     </>
   );
 }
 
-export default Counter;
+export default CounterButton;

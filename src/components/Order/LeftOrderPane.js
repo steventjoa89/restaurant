@@ -25,8 +25,10 @@ function LeftOrderPane() {
     }
   };
 
+  
+
   return (
-    <div className="col-span-6 md:col-span-4 overflow-y-scroll h-screen hide-scrollbar ml-3">
+    <div className="col-span-6 md:col-span-4 overflow-y-scroll h-screen hide-scrollbar mx-3 mb-20 md:mb-5">
       {/* Discount Menu */}
       {data?.discountedMenu && (
         <>

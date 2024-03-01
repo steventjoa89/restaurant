@@ -1,7 +1,7 @@
 import React from "react";
 import IncButton from "./IncButton";
 import CardTitle from "./CardTitle";
-import Counter from "./Counter";
+import CounterButton from "./CounterButton";
 
 function OrderCard() {
   return (
@@ -24,7 +24,7 @@ function OrderCard() {
           <div className="mt-auto">
             <div className="flex flex-row justify-between px-1 py-0.5">
               <div className="flex">
-                <Counter />
+                <CounterButton />
               </div>
               <span>x</span>
             </div>

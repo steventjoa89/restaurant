@@ -1,10 +1,13 @@
 import React from "react";
 import CardTitle from "./CardTitle";
 import CardAmountPrice from "./CardAmountPrice";
-import Counter from "./Counter";
+import CounterButton from "./CounterButton";
 import CardDisountSubtitle from "./CardDisountSubtitle";
+import OrderButton from "./OrderButton";
+import useOrderStore from "../store/client/useOrderStore";
 
 function MenuCard({
+  id,
   name,
   price,
   image,
@@ -12,6 +15,10 @@ function MenuCard({
   discount = 0,
   priceBeforeDiscount = 0,
 }) {
+  const { orders, increment, decrement } = useOrderStore();
+
+  const order = orders.find((order) => order.id === id);
+
   return (
     <div className="px-3 py-2 mb-2 border border-gray-200 shadow-sm rounded-lg">
       <div className="flex flex-col">
@@ -38,10 +45,15 @@ function MenuCard({
         </div>
         <div className="mt-auto flex justify-end">
           <div className="flex items-end">
-            {/* <Button color="dark" pill size="xs">
-              Order
-            </Button> */}
-            <Counter />
+            {order ? (
+              <CounterButton
+                count={order.total}
+                onIncClick={() => increment(id)}
+                onDecClick={() => decrement(id)}
+              />
+            ) : (
+              <OrderButton onClick={() => increment(id)} />
+            )}
           </div>
         </div>
       </div>
