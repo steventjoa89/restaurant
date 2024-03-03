@@ -2,9 +2,19 @@ import React from "react";
 import CardTitle from "./CardTitle";
 import CounterButton from "./CounterButton";
 import { convertAmountNumberToCurrencyString } from "../utils/stringUtils";
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt } from "react-icons/fa";
+import CardDisountSubtitle from "./CardDisountSubtitle";
 
-function OrderCard({ qty, name, price, image, onIncClick, onDecClick, onDelClick }) {
+function OrderCard({
+  qty,
+  name,
+  price,
+  image,
+  discount,
+  onIncClick,
+  onDecClick,
+  onDelClick,
+}) {
   return (
     <div className="px-3 py-2 mb-2 border border-gray-200 shadow-md rounded-lg">
       <div className="flex">
@@ -18,9 +28,10 @@ function OrderCard({ qty, name, price, image, onIncClick, onDecClick, onDelClick
             <CardTitle text={name} />
           </div>
           <div className="flex flex-row">
-            <div className="text-xs font-bold tracking-tight text-green-500 dark:text-white">
+            <div className="text-xs font-bold tracking-tight text-green-500 dark:text-white mr-1">
               {convertAmountNumberToCurrencyString(price)}
             </div>
+            <CardDisountSubtitle discount={discount} priceBeforeDiscount={0} />
           </div>
           <div className="mt-auto">
             <div className="flex flex-row justify-between px-1 py-0.5">
@@ -31,7 +42,10 @@ function OrderCard({ qty, name, price, image, onIncClick, onDecClick, onDelClick
                   onDecClick={onDecClick}
                 />
               </div>
-              <FaTrashAlt className="text-red-600 h-7 cursor-pointer" onClick={onDelClick} />
+              <FaTrashAlt
+                className="text-red-600 h-7 cursor-pointer"
+                onClick={onDelClick}
+              />
             </div>
           </div>
         </div>

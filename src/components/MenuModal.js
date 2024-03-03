@@ -1,19 +1,22 @@
 import { Modal } from "flowbite-react";
 import React from "react";
-import OrderButton from "./OrderButton";
-import useOrderStore from "../store/client/useOrderStore";
-import CounterButton from "./CounterButton";
+// import useOrderStore from "../store/client/useOrderStore";
+// import OrderButton from "./OrderButton";
+// import CounterButton from "./CounterButton";
 
 function MenuModal({ openModal, setOpenModal, menu }) {
-  const { orders, incrementOrder, decrementOrder } = useOrderStore();
-  const order = orders.find((order) => order.id === menu.id);
+  // const { orders, incrementOrder, decrementOrder } = useOrderStore();
+  // const order = orders.find((order) => order.id === menu.id);
   return (
     <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
       <Modal.Header className="m-0 py-1 items-center">
         <div className="text-md mt-3 font-bold tracking-tight text-gray-900 dark:text-white">
-          {menu?.name}
+          {/* TODO */}
+          {/* {menu?.name} */}
+          NOT YET DONE
         </div>
       </Modal.Header>
+      {/* 
       <Modal.Body>
         <img
           src={menu?.image}
@@ -31,11 +34,13 @@ function MenuModal({ openModal, setOpenModal, menu }) {
             <OrderButton onClick={() => incrementOrder(menu)} />
           )}
         </div>
+        TODO:
+        PRICE
 
         <div className="text-sm mt-3 tracking-tight justify-normal text-gray-900 dark:text-white">
           {menu?.description ?? ""}
         </div>
-      </Modal.Body>
+      </Modal.Body> */}
     </Modal>
   );
 }
