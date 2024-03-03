@@ -4,10 +4,14 @@ import FooterOrder from "../../components/order/FooterOrder";
 import RightOrderPane from "../../components/order/RightOrderPane";
 import LeftOrderPane from "../../components/order/LeftOrderPane";
 import { useGetAllMenu } from "../../store/server/features/order/queries";
+import useOrderStore from "../../store/client/useOrderStore";
 import Loader from "../../components/Loader";
 
 function OrderPage() {
   const { isLoading, error, data } = useGetAllMenu();
+
+  const { orders } = useOrderStore();
+
   return (
     <>
       {isLoading ? (
@@ -19,8 +23,7 @@ function OrderPage() {
             <LeftOrderPane data={data} />
             <RightOrderPane />
           </div>
-
-          <FooterOrder />
+          {orders.length > 0 && <FooterOrder />}
         </>
       )}
     </>
