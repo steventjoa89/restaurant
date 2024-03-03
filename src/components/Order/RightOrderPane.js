@@ -10,7 +10,7 @@ function RightOrderPane() {
         <HeadingRow text="Current Order" />
         <OrderSummary />
       </div>
-      <div className="mt-auto mb-20">
+      <div className="mt-auto">
         <HeadingRow text="Payment Summary" />
         <PaymentSummary />
       </div>

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import HeadingRow from "../HeadingRow";
 import MenuCard from "../MenuCard";
 import Categories from "../Categories";
+import useOrderStore from "../../store/client/useOrderStore";
 
-function LeftOrderPane({data}) {
-  
+function LeftOrderPane({ data }) {
+  const { orders } = useOrderStore();
+
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredData, setFilteredData] = useState(null);
 
@@ -25,7 +27,11 @@ function LeftOrderPane({data}) {
   };
 
   return (
-    <div className="col-span-6 md:col-span-4 overflow-y-scroll h-screen hide-scrollbar mx-3 mb-20 md:mb-5">
+    <div
+      className={`col-span-6 md:col-span-4 overflow-y-scroll h-screen hide-scrollbar mx-3 mb-${
+        orders.length == 0 ? 0 : 20
+      } md:mb-5`}
+    >
       {/* Discount Menu */}
       {data?.discountedMenu && (
         <>
