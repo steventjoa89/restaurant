@@ -17,6 +17,7 @@ function MenuCard(menu) {
     isDiscountMenu = false,
     discount = 0,
     priceBeforeDiscount = 0,
+    showMenuModalInfo,      // Show Menu Modal Info Description
   } = menu;
 
   const order = orders.find((order) => order.id === id);
@@ -28,6 +29,7 @@ function MenuCard(menu) {
           src={image}
           alt={name}
           className="rounded-lg shadow-md mb-2 cursor-pointer"
+          onClick={() => showMenuModalInfo(id)}
         />
         <div className="flex flex-row">
           <CardTitle text={name} />
