@@ -12,7 +12,7 @@ function LeftOrderPane({ data }) {
   const [filteredData, setFilteredData] = useState(null);
 
   // Categories Filter
-  const handleCategoryClick = (category) => {
+  const onCategoryClick = (category) => {
     // Show all data
     if (category === "All") {
       setActiveCategory("All");
@@ -22,7 +22,8 @@ function LeftOrderPane({ data }) {
     // Other than All
     if (category !== "All") {
       setActiveCategory(category);
-      const filterData = data?.menu?.filter((dt) => dt.category === category);
+      const filterData = data?.menu?.filter((dt) => dt.categories?.includes(category));
+
       setFilteredData(filterData);
     }
   };
@@ -72,7 +73,7 @@ function LeftOrderPane({ data }) {
           <Categories
             categories={data?.categories}
             activeCategory={activeCategory}
-            onClick={handleCategoryClick}
+            onClick={onCategoryClick}
           />
         </div>
 
