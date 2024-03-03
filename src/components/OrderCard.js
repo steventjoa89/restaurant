@@ -1,10 +1,10 @@
 import React from "react";
-import IncButton from "./IncButton";
 import CardTitle from "./CardTitle";
 import CounterButton from "./CounterButton";
 import { convertAmountNumberToCurrencyString } from "../utils/stringUtils";
+import { FaTrashAlt } from 'react-icons/fa';
 
-function OrderCard({ qty, name, price, image, onIncClick, onDecClick }) {
+function OrderCard({ qty, name, price, image, onIncClick, onDecClick, onDelClick }) {
   return (
     <div className="px-3 py-2 mb-2 border border-gray-200 shadow-md rounded-lg">
       <div className="flex">
@@ -31,7 +31,7 @@ function OrderCard({ qty, name, price, image, onIncClick, onDecClick }) {
                   onDecClick={onDecClick}
                 />
               </div>
-              <span>x</span>
+              <FaTrashAlt className="text-red-600 h-7 cursor-pointer" onClick={onDelClick} />
             </div>
           </div>
         </div>

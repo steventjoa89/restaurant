@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import HeadingRow from "../HeadingRow";
 import OrderSummary from "./OrderSummary";
 import PaymentSummary from "./PaymentSummary";
+import useOrderStore from "../../store/client/useOrderStore";
 
-function FooterOrder({ totalItem = 0 }) {
+function FooterOrder() {
+  const { orders } = useOrderStore();
+
   const [openModal, setOpenModal] = useState(false);
 
   const handleClick = () => {
@@ -19,25 +22,22 @@ function FooterOrder({ totalItem = 0 }) {
       >
         <Button className="flex-grow" color="dark" pill onClick={handleClick}>
           <span>My Order</span>
-          <span className="inline-flex items-center justify-center w-5 h-5 ms-2 text-xs font-semibold text-black bg-white rounded-full p-2">
-            {totalItem}
-          </span>
+          {orders.length > 0 && (
+            <span className="inline-flex items-center justify-center w-5 h-5 ms-2 text-xs font-semibold text-black bg-white rounded-full p-2">
+              {orders.length}
+            </span>
+          )}
         </Button>
       </Footer>
 
       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
         <Modal.Header className="m-0 py-1 items-center">
-          <HeadingRow text="Current Order" />
+          <HeadingRow text="" />
         </Modal.Header>
         <Modal.Body>
           <OrderSummary />
           <HeadingRow text="Payment Summary" />
           <PaymentSummary />
-          <div className="flex mt-3">
-            <Button className="flex-grow" color="dark" pill>
-              <span>Order Now</span>
-            </Button>
-          </div>
         </Modal.Body>
       </Modal>
     </>

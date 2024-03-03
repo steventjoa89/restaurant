@@ -7,7 +7,7 @@ import OrderButton from "./OrderButton";
 import useOrderStore from "../store/client/useOrderStore";
 
 function MenuCard(menu) {
-  const { orders, increment, decrement } = useOrderStore();
+  const { orders, incrementOrder, decrementOrder } = useOrderStore();
 
   const {
     id,
@@ -50,11 +50,11 @@ function MenuCard(menu) {
             {order ? (
               <CounterButton
                 count={order.qty}
-                onIncClick={() => increment(menu)}
-                onDecClick={() => decrement(menu)}
+                onIncClick={() => incrementOrder(menu)}
+                onDecClick={() => decrementOrder(menu)}
               />
             ) : (
-              <OrderButton onClick={() => increment(menu)} />
+              <OrderButton onClick={() => incrementOrder(menu)} />
             )}
           </div>
         </div>

@@ -3,7 +3,7 @@ import OrderCard from "../OrderCard";
 import useOrderStore from "../../store/client/useOrderStore";
 
 function OrderSummary() {
-  const { orders, increment, decrement } = useOrderStore();
+  const { orders, incrementOrder, decrementOrder, deleteOrder } = useOrderStore();
 
   return (
     <div
@@ -15,8 +15,9 @@ function OrderSummary() {
           <OrderCard
             key={i}
             {...order}
-            onIncClick={() => increment(order)}
-            onDecClick={() => decrement(order)}
+            onIncClick={() => incrementOrder(order)}
+            onDecClick={() => decrementOrder(order)}
+            onDelClick={() => deleteOrder(order)}
           />
         ))
       ) : (

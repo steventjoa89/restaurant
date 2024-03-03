@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import HeadingRow from "../HeadingRow";
 import MenuCard from "../MenuCard";
 import Categories from "../Categories";
-import { useGetAllMenu } from "../../store/server/features/order/queries";
 
-function LeftOrderPane() {
-  const { isLoading, error, data } = useGetAllMenu();
+function LeftOrderPane({data}) {
+  
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredData, setFilteredData] = useState(null);
 

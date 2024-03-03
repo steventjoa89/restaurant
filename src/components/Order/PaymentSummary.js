@@ -2,6 +2,7 @@ import React from "react";
 import ListRow from "../ListRow";
 import { convertAmountNumberToCurrencyString } from "../../utils/stringUtils";
 import useOrderStore from "../../store/client/useOrderStore";
+import { Button } from "flowbite-react";
 
 function PaymentSummary() {
   const { orders } = useOrderStore();
@@ -31,6 +32,17 @@ function PaymentSummary() {
         textWeight="bold"
         value={convertAmountNumberToCurrencyString(grandTotal)}
       />
+
+      <div className="flex mt-3">
+        <Button
+          className="flex-grow"
+          color="dark"
+          pill
+          disabled={orders.length > 0 ? false : true}
+        >
+          Order Now
+        </Button>
+      </div>
     </>
   );
 }

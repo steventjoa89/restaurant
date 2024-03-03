@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 const useOrderStore = create((set) => ({
   orders: [],
-  increment: (item) =>
+  incrementOrder: (item) =>
     set((state) => {
       const existingItem = state.orders.find((order) => order.id === item.id);
       if (existingItem) {
@@ -17,7 +17,7 @@ const useOrderStore = create((set) => ({
         };
       }
     }),
-  decrement: (item) =>
+  decrementOrder: (item) =>
     set((state) => {
       const existingItem = state.orders.find((order) => order.id === item.id);
       if (existingItem && existingItem.qty > 1) {
@@ -31,6 +31,13 @@ const useOrderStore = create((set) => ({
           orders: state.orders.filter((order) => order.id !== item.id),
         };
       }
+    }),
+  deleteOrder: (item) =>
+    set((state) => {
+      const existingItem = state.orders.find((order) => order.id === item.id);
+      return {
+        orders: state.orders.filter((order) => order.id !== item.id),
+      };
     }),
 }));
 
