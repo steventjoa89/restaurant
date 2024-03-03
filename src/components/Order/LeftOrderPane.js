@@ -48,16 +48,15 @@ function LeftOrderPane({ data }) {
         } md:mb-5`}
       >
         {/* Discount Menu */}
-        {data?.discountedMenu && (
+        {data?.discountMenu && (
           <>
             <div className="mt-3"></div>
             <HeadingRow text="Special Discount Today" textSize="lg" />
             <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-              {data?.discountedMenu?.map((mn, i) => (
+              {data?.discountMenu?.map((mn, i) => (
                 <MenuCard
                   key={i}
                   {...mn}
-                  isDiscountMenu={true}
                   showMenuModalInfo={showMenuModalInfo}
                 />
               ))}

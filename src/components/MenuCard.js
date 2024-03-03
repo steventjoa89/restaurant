@@ -14,10 +14,9 @@ function MenuCard(menu) {
     name,
     price,
     image,
-    isDiscountMenu = false,
     discount = 0,
     priceBeforeDiscount = 0,
-    showMenuModalInfo,      // Show Menu Modal Info Description
+    showMenuModalInfo, // Show Menu Modal Info Description
   } = menu;
 
   const order = orders.find((order) => order.id === id);
@@ -35,8 +34,7 @@ function MenuCard(menu) {
           <CardTitle text={name} />
         </div>
         <div className="flex flex-row">
-          {/* <CardSubtitle text="Price Per Portion" /> */}
-          {isDiscountMenu && (
+          {discount > 0 && priceBeforeDiscount > 0 && (
             <CardDisountSubtitle
               discount={discount}
               priceBeforeDiscount={priceBeforeDiscount}
