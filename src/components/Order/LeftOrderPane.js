@@ -6,7 +6,7 @@ import useOrderStore from "../../store/client/useOrderStore";
 import MenuModal from "../MenuModal";
 
 function LeftOrderPane({ data }) {
-  const { orders } = useOrderStore();
+  const { orders, incrementOrder, decrementOrder } = useOrderStore();
 
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredData, setFilteredData] = useState(null);
@@ -93,6 +93,9 @@ function LeftOrderPane({ data }) {
         openModal={openModal}
         setOpenModal={setOpenModal}
         menu={modalMenuInfo}
+        orders={orders}
+        incrementOrder={incrementOrder}
+        decrementOrder={decrementOrder}
       />
     </>
   );
