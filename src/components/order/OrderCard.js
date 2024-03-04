@@ -39,7 +39,7 @@ function OrderCard({
         <button
           type="button"
           className="p-2 rounded text-red-600 hover:bg-gray-100"
-          onClick={onDelOrder} 
+          onClick={onDelOrder}
         >
           <FaTrashAlt />
         </button>

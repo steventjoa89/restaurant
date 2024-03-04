@@ -19,25 +19,22 @@ function OrderSidebar() {
 
   return (
     <aside
-      id="sidebar"
-      className="fixed top-0 right-0 z-20 hidden flex-col flex-shrink-0 w-80 h-full pt-16 font-normal duration-75 lg:flex transition-width"
+      className="fixed top-0 right-0 z-20 flex flex-col w-80 h-full pt-16 font-normal duration-75 lg:flex transition-width"
       aria-label="Sidebar"
     >
-      <div className="relative flex flex-col flex-1 min-h-0 pt-0 bg-white border-l border-gray-200">
-        <div className="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
-          <div className="flex-1 px-3 space-y-1 bg-white divide-y divide-gray-200">
-            {orders.map((order, i) => (
-              <OrderCard
-                key={i}
-                {...order}
-                onIncOrder={() => onIncrementOrder(order)}
-                onDecOrder={() => onDecrementOrder(order)}
-                onDelOrder={() => onDeleteOrder(order)}
-              />
-            ))}
-          </div>
-        </div>
-        {/* Total Price & Payment Summary */}
+      <div class="overflow-auto flex-grow px-3 ">
+        {orders.map((order, i) => (
+          <OrderCard
+            key={i}
+            {...order}
+            onIncOrder={() => onIncrementOrder(order)}
+            onDecOrder={() => onDecrementOrder(order)}
+            onDelOrder={() => onDeleteOrder(order)}
+          />
+        ))}
+      </div>
+
+      <div class="flex-none">
         <OrderSidebarPaymentSummary orders={orders} />
       </div>
     </aside>
