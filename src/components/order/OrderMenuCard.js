@@ -2,8 +2,11 @@ import React from "react";
 import { convertAmountNumberToCurrencyString } from "../../utils/stringUtils";
 import OrderButton from "../OrderButton";
 import { FaThumbsUp } from "react-icons/fa";
+import ButtonCounter from "../ButtonCounter";
 
-function OrderMenuCard({ id, name, image, price, isRecommended }) {
+function OrderMenuCard({ menu, orders, onIncrementOrder, onDecrementOrder }) {
+  const { id, name, image, price, isRecommended } = menu;
+  const isOrdered = orders.find((order) => order.id === menu.id);
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
       <img
@@ -14,7 +17,7 @@ function OrderMenuCard({ id, name, image, price, isRecommended }) {
       />
       <div className="px-3 flex flex-col flex-grow md:text-left">
         <div className="flex justify-between">
-          <h5 className="text-md font-bold tracking-tight text-gray-900 ">
+          <h5 className="text-md font-bold tracking-tight text-gray-900">
             {name}
           </h5>
           {isRecommended && (
@@ -27,8 +30,16 @@ function OrderMenuCard({ id, name, image, price, isRecommended }) {
         <h6 className="mb-2 text-md tracking-tight text-gray-500">
           {convertAmountNumberToCurrencyString(price)}
         </h6>
-        <div className="mb-2 md:self-end">
-          <OrderButton />
+        <div className="mt-auto mb-2 md:self-end">
+          {isOrdered ? (
+            <ButtonCounter
+              qty={isOrdered?.qty}
+              onIncrementOrder={() => onIncrementOrder(menu)}
+              onDecrementOrder={() => onDecrementOrder(menu)}
+            />
+          ) : (
+            <OrderButton onClick={() => onIncrementOrder(menu)} />
+          )}
         </div>
       </div>
     </div>

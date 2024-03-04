@@ -1,11 +1,8 @@
 import React from "react";
 import ButtonPrimary from "../ButtonPrimary";
 import OrderPriceInfoRow from "./OrderPriceInfoRow";
-import useOrderStore from "../../store/client/useOrderStore";
 
-function OrderSidebarPaymentSummary() {
-  const { orders } = useOrderStore();
-
+function OrderSidebarPaymentSummary({ orders }) {
   const subTotal = orders.reduce(
     (total, order) => total + order.price * order.qty,
     0
@@ -22,7 +19,13 @@ function OrderSidebarPaymentSummary() {
       <div className="border-b-2 border-gray-200 my-2 px-3"></div>
       <OrderPriceInfoRow info="Total" amount={grandTotal} />
 
-      <ButtonPrimary text="Order Now" mt={4} mb={2} me={2} />
+      <ButtonPrimary
+        text="Order Now"
+        mt={4}
+        mb={2}
+        me={2}
+        disabled={orders.length > 0 ? false : true}
+      />
     </div>
   );
 }

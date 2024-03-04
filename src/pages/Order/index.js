@@ -13,7 +13,7 @@ import OrderMenuCategories from "../../components/order/OrderMenuCategories";
 
 function OrderPage() {
   const { isLoading, error, data } = useGetAllMenu();
-  const { orders } = useOrderStore();
+  const { orders, incrementOrder, decrementOrder } = useOrderStore();
 
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredData, setFilteredData] = useState(null);
@@ -37,6 +37,15 @@ function OrderPage() {
     }
   };
 
+  // Increment & Decrement the Orders
+  const onIncrementOrder = (menu) => {
+    incrementOrder(menu);
+  };
+
+  const onDecrementOrder = (menu) => {
+    decrementOrder(menu);
+  };
+
   return (
     <>
       <OrderNavbar />
@@ -56,25 +65,16 @@ function OrderPage() {
               />
 
               {/* Main Menu Items */}
-              {/* {data?.menu?.map((menu, i) => (
-                <OrderMenuCard key={i} {...menu} />
-              ))} */}
-              {filteredData &&
-                filteredData.map((menu, i) => (
-                  <OrderMenuCard
-                    key={i}
-                    {...menu}
-                    // showMenuModalInfo={showMenuModalInfo}
-                  />
-                ))}
-              {!filteredData &&
-                data?.menu?.map((menu, i) => (
-                  <OrderMenuCard
-                    key={i}
-                    {...menu}
-                    // showMenuModalInfo={showMenuModalInfo}
-                  />
-                ))}
+              {(filteredData || data?.menu)?.map((menu, i) => (
+                <OrderMenuCard
+                  key={i}
+                  menu={menu}
+                  orders={orders}
+                  onIncrementOrder={onIncrementOrder}
+                  onDecrementOrder={onDecrementOrder}
+                  // showMenuModalInfo={showMenuModalInfo}
+                />
+              ))}
             </div>
           </main>
         </div>

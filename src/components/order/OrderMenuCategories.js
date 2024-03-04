@@ -1,6 +1,5 @@
 import React from "react";
 import ButtonCategory from "../ButtonCategoryOutline";
-import ButtonPrimary from "../ButtonPrimary";
 
 function OrderMenuCategories({ categories, activeCategory, onClick }) {
   return (
@@ -8,14 +7,14 @@ function OrderMenuCategories({ categories, activeCategory, onClick }) {
       <div className="flex flex-nowrap overflow-x-auto ml-1 mb-3">
         <ButtonCategory
           text="All"
-          active={activeCategory == "All" ? true : false}
+          active={activeCategory === "All" ? true : false}
           onClick={() => onClick("All")}
         />
         {categories?.map((category, i) => (
           <ButtonCategory
             key={i}
             text={category}
-            active={activeCategory == category ? true : false}
+            active={activeCategory === category ? true : false}
             onClick={() => onClick(category)}
           />
         ))}

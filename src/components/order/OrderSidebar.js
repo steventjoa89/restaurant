@@ -1,8 +1,11 @@
 import React from "react";
 import OrderSidebarPaymentSummary from "./OrderSidebarPaymentSummary";
 import OrderCard from "./OrderCard";
+import useOrderStore from "../../store/client/useOrderStore";
 
 function OrderSidebar() {
+  const { orders } = useOrderStore();
+
   return (
     <aside
       id="sidebar"
@@ -22,7 +25,7 @@ function OrderSidebar() {
             />
 
             {/* Total Price & Payment Summary */}
-            <OrderSidebarPaymentSummary />
+            <OrderSidebarPaymentSummary orders={orders} />
           </div>
         </div>
       </div>

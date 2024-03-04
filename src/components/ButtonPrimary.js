@@ -9,17 +9,19 @@ function ButtonPrimary({
   mb = 0,
   me = 2,
   onClick,
+  rounded = false,
 }) {
+  const pY = `py-${py}`;
   return (
     <button
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className={`text-white bg-yellow-${!disabled ? "400" : "200"} ${
+      className={`text-white ${!disabled ? "bg-yellow-400" : "bg-yellow-200"} ${
         !disabled && "hover:bg-yellow-500"
-      } ${
-        !disabled && "focus:ring-yellow-300"
-      }  font-medium rounded-lg text-sm text-center md:text-sm px-${px} py-${py} mt-${mt} mb-${mb} me-${me} ${
+      } ${!disabled && "focus:ring-yellow-300"} font-medium ${
+        !rounded ? "rounded-lg" : "rounded-full"
+      } text-sm text-center md:text-sm px-${px} ${pY} mt-${mt} mb-${mb} me-${me} ${
         disabled && "cursor-not-allowed"
       }`}
     >
