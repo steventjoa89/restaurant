@@ -1,20 +1,20 @@
 import React from "react";
 
-function ButtonCustom({
+function ButtonPrimary({
   text,
   disabled = false,
   px = 5,
   py = 2.5,
   mt = 0,
   mb = 0,
-  me = 0,
+  me = 2,
+  onClick,
 }) {
   return (
     <button
       type="button"
       disabled={disabled}
-      // className={`       `}
-      // className=" cursor-not-allowed   px-5 py-2.5 text-center"
+      onClick={onClick}
       className={`text-white bg-yellow-${!disabled ? "400" : "200"} ${
         !disabled && "hover:bg-yellow-500"
       } ${
@@ -28,4 +28,4 @@ function ButtonCustom({
   );
 } // hover:bg-yellow-500 - focus:ring-yellow-300
 
-export default ButtonCustom;
+export default ButtonPrimary;

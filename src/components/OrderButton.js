@@ -1,8 +1,8 @@
 import React from "react";
-import ButtonCustom from "./ButtonCustom";
+import ButtonPrimary from "./ButtonPrimary";
 
 function OrderButton() {
-  return <ButtonCustom text="Order" px={3} py={2} />;
+  return <ButtonPrimary text="Order" px={3} py={2} me={0} />;
 }
 
 export default OrderButton;
