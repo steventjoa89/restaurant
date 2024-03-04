@@ -4,7 +4,18 @@ import OrderCard from "./OrderCard";
 import useOrderStore from "../../store/client/useOrderStore";
 
 function OrderSidebar() {
-  const { orders } = useOrderStore();
+  const { orders, incrementOrder, decrementOrder, deleteOrder } =
+    useOrderStore();
+
+  const onIncrementOrder = (menu) => {
+    incrementOrder(menu);
+  };
+  const onDecrementOrder = (menu) => {
+    decrementOrder(menu);
+  };
+  const onDeleteOrder = (menu) => {
+    deleteOrder(menu);
+  };
 
   return (
     <aside
@@ -15,19 +26,19 @@ function OrderSidebar() {
       <div className="relative flex flex-col flex-1 min-h-0 pt-0 bg-white border-l border-gray-200">
         <div className="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
           <div className="flex-1 px-3 space-y-1 bg-white divide-y divide-gray-200">
-            <OrderCard
-              id={1}
-              name="Pepperoni Pizza"
-              image="https://media.istockphoto.com/id/521403691/photo/hot-homemade-pepperoni-pizza.jpg?s=612x612&w=0&k=20&c=PaISuuHcJWTEVoDKNnxaHy7L2BTUkyYZ06hYgzXmTbo="
-              price={1200000}
-              description="Pepperoni is a variety of spicy salami made from cured pork and beef seasoned with paprika and chili peppers."
-              categories={["Main Courses", "Pizza"]}
-            />
-
-            {/* Total Price & Payment Summary */}
-            <OrderSidebarPaymentSummary orders={orders} />
+            {orders.map((order, i) => (
+              <OrderCard
+                key={i}
+                {...order}
+                onIncOrder={() => onIncrementOrder(order)}
+                onDecOrder={() => onDecrementOrder(order)}
+                onDelOrder={() => onDeleteOrder(order)}
+              />
+            ))}
           </div>
         </div>
+        {/* Total Price & Payment Summary */}
+        <OrderSidebarPaymentSummary orders={orders} />
       </div>
     </aside>
   );

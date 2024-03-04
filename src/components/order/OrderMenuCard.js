@@ -17,7 +17,7 @@ function OrderMenuCard({ menu, orders, onIncrementOrder, onDecrementOrder }) {
       />
       <div className="px-3 flex flex-col flex-grow md:text-left">
         <div className="flex justify-between">
-          <h5 className="text-md font-bold tracking-tight text-gray-900">
+          <h5 className="text-md font-bold tracking-tight text-gray-900 truncate">
             {name}
           </h5>
           {isRecommended && (
@@ -27,7 +27,7 @@ function OrderMenuCard({ menu, orders, onIncrementOrder, onDecrementOrder }) {
           )}
         </div>
 
-        <h6 className="mb-2 text-md tracking-tight text-gray-500">
+        <h6 className="mb-2 text-md tracking-tight text-gray-500 truncate">
           {convertAmountNumberToCurrencyString(price)}
         </h6>
         <div className="mt-auto mb-2 md:self-end">
