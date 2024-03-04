@@ -19,10 +19,10 @@ function OrderSidebar() {
 
   return (
     <aside
-      className="fixed top-0 right-0 z-20 flex flex-col w-80 h-full pt-16 font-normal duration-75 lg:flex transition-width"
+      className="fixed top-0 right-0 z-20 hidden lg:flex lg:flex-col w-80 h-full pt-16 font-normal duration-75 transition-width"
       aria-label="Sidebar"
     >
-      <div class="overflow-auto flex-grow px-3 ">
+      <div className="overflow-auto flex-grow px-3 ">
         {orders.map((order, i) => (
           <OrderCard
             key={i}
@@ -34,7 +34,7 @@ function OrderSidebar() {
         ))}
       </div>
 
-      <div class="flex-none">
+      <div className="flex-none">
         <OrderSidebarPaymentSummary orders={orders} />
       </div>
     </aside>

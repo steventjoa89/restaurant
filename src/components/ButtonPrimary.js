@@ -10,6 +10,7 @@ function ButtonPrimary({
   me = 2,
   onClick,
   rounded = false,
+  additionalClassName = "",
 }) {
   const pY = `py-${py}`;
   return (
@@ -17,7 +18,7 @@ function ButtonPrimary({
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className={`text-white ${!disabled ? "bg-yellow-400" : "bg-yellow-200"} ${
+      className={`text-white ${additionalClassName} ${!disabled ? "bg-yellow-400" : "bg-yellow-200"} ${
         !disabled && "hover:bg-yellow-500"
       } ${!disabled && "focus:ring-yellow-300"} font-medium ${
         !rounded ? "rounded-lg" : "rounded-full"
