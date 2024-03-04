@@ -7,6 +7,7 @@ import { useGetAllMenu } from "../../store/server/features/order/queries";
 import useOrderStore from "../../store/client/useOrderStore";
 import OrderSidebar from "../../components/order/OrderSidebar";
 import OrderNavbar from "../../components/order/OrderNavbar";
+import OrderMenuCard from "../../components/order/OrderMenuCard";
 // import Loader from "../../components/Loader";
 
 function OrderPage() {
@@ -18,16 +19,25 @@ function OrderPage() {
     <>
       <OrderNavbar />
 
-      <OrderSidebar />
       <div className="flex pt-16 overflow-hidden bg-gray-50 ">
         <div
           id="main-content"
           className="relative w-full h-full overflow-y-auto bg-gray-50 lg:mr-80 "
         >
-          <main>This is main content</main>
+          <main className="px-4 pt-6 pb-6">
+            <div className="grid gap-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {/* Main Menu Items */}
+              {data?.menu?.map((menu, i) => (
+                <OrderMenuCard key={i} {...menu} />
+              ))}
+            </div>
+          </main>
         </div>
       </div>
+
+      <OrderSidebar />
     </>
+
     // <>
     //   {isLoading ? (
     //     <Loader />
