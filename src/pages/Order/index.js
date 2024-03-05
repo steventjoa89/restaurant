@@ -7,13 +7,31 @@ import OrderMenuCard from "../../components/order/OrderMenuCard";
 import OrderMenuCategories from "../../components/order/OrderMenuCategories";
 import OrderBottombar from "../../components/order/OrderBottombar";
 import Loader from "../../components/Loader";
+import ModalMenuInfo from "../../components/ModalMenuInfo";
 
 function OrderPage() {
-  const { isLoading, error, data } = useGetAllMenu();
+  const { isLoading, data } = useGetAllMenu(); // TODO: ERROR PAGE: const { isLoading, error, data } = useGetAllMenu();
   const { orders, incrementOrder, decrementOrder } = useOrderStore();
 
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredData, setFilteredData] = useState(null);
+
+  // Menu Modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMenuInfo, setModalMenuInfo] = useState(null);
+
+  const toggleModal = () => {
+    const modalStatus = !isModalOpen;
+    if (modalStatus == false) {
+      setModalMenuInfo(null);
+    }
+    setIsModalOpen(modalStatus);
+  };
+
+  const onShowMenuInfo = (menu) => {
+    setModalMenuInfo(menu);
+    setIsModalOpen(true);
+  };
 
   // Categories Filter
   const onCategoryClick = (category) => {
@@ -75,6 +93,7 @@ function OrderPage() {
                   orders={orders}
                   onIncrementOrder={onIncrementOrder}
                   onDecrementOrder={onDecrementOrder}
+                  showMenuInfo={onShowMenuInfo}
                   // showMenuModalInfo={showMenuModalInfo}
                 />
               ))}
@@ -88,6 +107,15 @@ function OrderPage() {
 
       {/* Mobile Bottombar Order Screen */}
       <OrderBottombar />
+
+      <ModalMenuInfo
+        isModalOpen={isModalOpen}
+        toggleModal={toggleModal}
+        modalMenuInfo={modalMenuInfo}
+        orders={orders}
+        onIncrementOrder={onIncrementOrder}
+        onDecrementOrder={onDecrementOrder}
+      />
     </>
   );
 }

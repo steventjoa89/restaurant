@@ -25,7 +25,7 @@ const Modal = ({
             className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
             onClick={onClose}
           ></div>
-          <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all w-11/12 sm:w-3/5 max-h-[95vh] sm:max-h-[75vh] flex flex-col">
+          <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all w-11/12 sm:w-3/5 max-h-[95vh] sm:max-h-[95vh] flex flex-col">
             <div className="bg-white p-5 flex-shrink-0">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-bold">{title}</h3>

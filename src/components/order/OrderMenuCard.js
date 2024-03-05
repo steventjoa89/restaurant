@@ -4,7 +4,7 @@ import OrderButton from "../OrderButton";
 import { FaThumbsUp } from "react-icons/fa";
 import ButtonCounter from "../ButtonCounter";
 
-function OrderMenuCard({ menu, orders, onIncrementOrder, onDecrementOrder }) {
+function OrderMenuCard({ menu, orders, onIncrementOrder, onDecrementOrder, showMenuInfo }) {
   const { name, image, price, isRecommended } = menu;
   const isOrdered = orders.find((order) => order.id === menu.id);
   return (
@@ -13,7 +13,7 @@ function OrderMenuCard({ menu, orders, onIncrementOrder, onDecrementOrder }) {
         src={image}
         alt={name}
         className="rounded-t-lg shadow-md mb-2 cursor-pointer object-cover w-full h-28 md:h-32 lg:h-48"
-        // onClick={() => showMenuModalInfo(id)}
+        onClick={() => showMenuInfo(menu)}
       />
       <div className="px-3 flex flex-col flex-grow md:text-left">
         <div className="flex justify-between">
