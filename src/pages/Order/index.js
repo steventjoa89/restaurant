@@ -6,9 +6,10 @@ import OrderNavbar from "../../components/order/OrderNavbar";
 import OrderMenuCard from "../../components/order/OrderMenuCard";
 import OrderMenuCategories from "../../components/order/OrderMenuCategories";
 import OrderBottombar from "../../components/order/OrderBottombar";
+import Loader from "../../components/Loader";
 
 function OrderPage() {
-  const { data } = useGetAllMenu();
+  const { isLoading, error, data } = useGetAllMenu();
   const { orders, incrementOrder, decrementOrder } = useOrderStore();
 
   const [activeCategory, setActiveCategory] = useState("All");
@@ -42,7 +43,9 @@ function OrderPage() {
     decrementOrder(menu);
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <OrderNavbar />
 
