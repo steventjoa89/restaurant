@@ -2,7 +2,7 @@ import React from "react";
 import ButtonPrimary from "../ButtonPrimary";
 import OrderPriceInfoRow from "./OrderPriceInfoRow";
 
-function OrderSidebarPaymentSummary({ orders }) {
+function OrderSidebarPaymentSummary({ orders, isModalView = false }) {
   const subTotal = orders.reduce(
     (total, order) => total + order.price * order.qty,
     0
@@ -12,7 +12,11 @@ function OrderSidebarPaymentSummary({ orders }) {
   const grandTotal = subTotal + taxFee + serviceFee;
 
   return (
-    <div className="justify-center hidden w-full p-4 bg-white lg:flex lg:flex-col">
+    <div
+      className={`justify-center w-full ${
+        isModalView ? "p-1" : "p-4"
+      } bg-white lg:flex lg:flex-col`}
+    >
       <OrderPriceInfoRow info="Subtotal" amount={subTotal} />
       <OrderPriceInfoRow info="Tax" amount={taxFee} />
       <OrderPriceInfoRow info="Service" amount={serviceFee} />

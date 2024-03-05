@@ -8,7 +8,7 @@ function ButtonCounter({ qty, onIncrementOrder, onDecrementOrder }) {
         className="text-yellow-400 cursor-pointer text-2xl hover:text-yellow-500 focus:text-yellow-500"
         onClick={onDecrementOrder}
       />
-      <div className="ms-2 me-2 text-md font-semibold tracking-tight text-gray-600">
+      <div className="ms-2 me-2 text-md font-bold tracking-tight text-gray-600">
         {qty}
       </div>
       <FaPlusCircle

@@ -80,10 +80,10 @@ function OrderPage() {
         </div>
       </div>
 
-      {/* Desktop Order Screen */}
+      {/* Desktop Sidebar Order Screen */}
       <OrderSidebar />
 
-      {/* Mobile Order Screen */}
+      {/* Mobile Bottombar Order Screen */}
       <OrderBottombar />
     </>
   );
