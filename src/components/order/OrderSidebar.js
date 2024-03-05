@@ -22,16 +22,26 @@ function OrderSidebar() {
       className="fixed top-0 right-0 z-20 hidden lg:flex lg:flex-col w-80 h-full pt-16 font-normal duration-75 transition-width"
       aria-label="Sidebar"
     >
-      <div className="overflow-auto flex-grow px-3 ">
-        {orders.map((order, i) => (
-          <OrderCard
-            key={i}
-            {...order}
-            onIncOrder={() => onIncrementOrder(order)}
-            onDecOrder={() => onDecrementOrder(order)}
-            onDelOrder={() => onDeleteOrder(order)}
-          />
-        ))}
+      <div
+        className={`overflow-auto flex-grow px-3 ${
+          orders?.length == 0 && "flex justify-center items-center"
+        }`}
+      >
+        {orders?.length == 0 ? (
+          <div className="italic text-sm text-gray-400 mt-3">
+            You have not selected any items.
+          </div>
+        ) : (
+          orders.map((order, i) => (
+            <OrderCard
+              key={i}
+              {...order}
+              onIncOrder={() => onIncrementOrder(order)}
+              onDecOrder={() => onDecrementOrder(order)}
+              onDelOrder={() => onDeleteOrder(order)}
+            />
+          ))
+        )}
       </div>
 
       <div className="flex-none">
