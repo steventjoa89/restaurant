@@ -34,7 +34,7 @@ const useOrderStore = create((set) => ({
     }),
   deleteOrder: (item) =>
     set((state) => {
-      const existingItem = state.orders.find((order) => order.id === item.id);
+      // const existingItem = state.orders.find((order) => order.id === item.id);
       return {
         orders: state.orders.filter((order) => order.id !== item.id),
       };

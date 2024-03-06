@@ -22,7 +22,7 @@ function OrderPage() {
 
   const toggleModal = () => {
     const modalStatus = !isModalOpen;
-    if (modalStatus == false) {
+    if (modalStatus === false) {
       setModalMenuInfo(null);
     }
     setIsModalOpen(modalStatus);

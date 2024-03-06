@@ -24,10 +24,10 @@ function OrderSidebar() {
     >
       <div
         className={`overflow-auto flex-grow px-3 ${
-          orders?.length == 0 && "flex justify-center items-center"
+          orders?.length === 0 && "flex justify-center items-center"
         }`}
       >
-        {orders?.length == 0 ? (
+        {orders?.length === 0 ? (
           <div className="italic text-sm text-gray-400 mt-3">
             You have not selected any items.
           </div>
