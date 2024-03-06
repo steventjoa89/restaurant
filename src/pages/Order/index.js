@@ -11,7 +11,7 @@ import ModalMenuInfo from "../../components/ModalMenuInfo";
 import Error from "../../components/error/Error";
 
 function OrderPage() {
-  const { isLoading, error, data } = useGetAllMenu(); // TODO: ERROR PAGE: const { isLoading, error, data } = useGetAllMenu();
+  const { isLoading, error, data } = useGetAllMenu();
   const { orders, incrementOrder, decrementOrder } = useOrderStore();
 
   const [activeCategory, setActiveCategory] = useState("All");

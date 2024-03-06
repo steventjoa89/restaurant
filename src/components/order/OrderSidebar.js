@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import OrderSidebarPaymentSummary from "./OrderSidebarPaymentSummary";
-import OrderCard from "./OrderCard";
 import useOrderStore from "../../store/client/useOrderStore";
+import OrderSidebarTab from "./OrderSidebarTab";
+import OrderSidebarTabPanel from "./OrderSidebarTabPanel";
+import useOrderedStore from "../../store/client/useOrderedStore";
 
 function OrderSidebar() {
   const { orders, incrementOrder, decrementOrder, deleteOrder } =
     useOrderStore();
+  const { ordered } = useOrderedStore();
+
+  const [activeTab, setActiveTab] = useState(0);
 
   const onIncrementOrder = (menu) => {
     incrementOrder(menu);
@@ -17,32 +22,32 @@ function OrderSidebar() {
     deleteOrder(menu);
   };
 
+  // Change Tab Handler
+  const tabNames = ["my-order", "ordered"];
+  const handleTabClick = (tabIndex) => {
+    setActiveTab(tabIndex);
+  };
+
   return (
     <aside
       className="fixed top-0 right-0 z-20 hidden lg:flex lg:flex-col w-80 h-full pt-16 font-normal duration-75 transition-width"
       aria-label="Sidebar"
     >
-      <div
-        className={`overflow-auto flex-grow px-3 ${
-          orders?.length === 0 && "flex justify-center items-center"
-        }`}
-      >
-        {orders?.length === 0 ? (
-          <div className="italic text-sm text-gray-400 mt-3">
-            You have not selected any items.
-          </div>
-        ) : (
-          orders.map((order, i) => (
-            <OrderCard
-              key={i}
-              {...order}
-              onIncOrder={() => onIncrementOrder(order)}
-              onDecOrder={() => onDecrementOrder(order)}
-              onDelOrder={() => onDeleteOrder(order)}
-            />
-          ))
-        )}
-      </div>
+      {/* TAB */}
+      <OrderSidebarTab
+        tabNames={tabNames}
+        activeTab={activeTab}
+        handleTabClick={handleTabClick}
+      />
+      <OrderSidebarTabPanel
+        tabNames={tabNames}
+        activeTab={activeTab}
+        orders={orders}
+        onIncrementOrder={onIncrementOrder}
+        onDecrementOrder={onDecrementOrder}
+        onDeleteOrder={onDeleteOrder}
+        ordered={ordered}
+      />
 
       <div className="flex-none">
         <OrderSidebarPaymentSummary orders={orders} />

@@ -12,7 +12,6 @@ function Loader() {
         ariaLabel="tail-spin-loading"
         radius="1"
         wrapperStyle={{}}
-        wrapperClass=""
       />
       <span className="mt-2">Loading...</span>
     </div>

@@ -12,6 +12,7 @@ function OrderCard({
   onIncOrder,
   onDecOrder,
   onDelOrder,
+  readonly = false,
 }) {
   return (
     <div className="flex items-center p-3 mb-3.5 border border-gray-200 rounded-lg">
@@ -27,7 +28,9 @@ function OrderCard({
         <p className="text-sm text-gray-500">
           {convertAmountNumberToCurrencyString(price)}
         </p>
-        <div>
+        <div
+          className={`${!readonly ? "flex items-center ml-auto" : "hidden"}`}
+        >
           <ButtonCounter
             qty={qty}
             onIncrementOrder={onIncOrder}
@@ -35,7 +38,7 @@ function OrderCard({
           />
         </div>
       </div>
-      <div className="flex items-center ml-auto">
+      <div className={`${!readonly ? "flex items-center ml-auto" : "hidden"}`}>
         <button
           type="button"
           className="p-2 rounded text-red-600 hover:bg-gray-100"
