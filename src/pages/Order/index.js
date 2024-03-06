@@ -8,9 +8,10 @@ import OrderMenuCategories from "../../components/order/OrderMenuCategories";
 import OrderBottombar from "../../components/order/OrderBottombar";
 import Loader from "../../components/Loader";
 import ModalMenuInfo from "../../components/ModalMenuInfo";
+import Error from "../../components/error/Error";
 
 function OrderPage() {
-  const { isLoading, data } = useGetAllMenu(); // TODO: ERROR PAGE: const { isLoading, error, data } = useGetAllMenu();
+  const { isLoading, error, data } = useGetAllMenu(); // TODO: ERROR PAGE: const { isLoading, error, data } = useGetAllMenu();
   const { orders, incrementOrder, decrementOrder } = useOrderStore();
 
   const [activeCategory, setActiveCategory] = useState("All");
@@ -61,8 +62,24 @@ function OrderPage() {
     decrementOrder(menu);
   };
 
+  const onClick = () => { // TODO Refresh page...
+    console.log("refresh page...");
+  };
+
+  return (
+    <>
+      <OrderNavbar />
+      <Error onClick={onClick} />
+    </>
+  );
+
   return isLoading ? (
     <Loader />
+  ) : error ? (
+    <>
+      <OrderNavbar />
+      <Error />
+    </>
   ) : (
     <>
       <OrderNavbar />
