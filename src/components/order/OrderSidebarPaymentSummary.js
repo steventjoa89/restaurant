@@ -43,13 +43,14 @@ function OrderSidebarPaymentSummary({ orders, isModalView = false }) {
       <OrderPriceInfoRow info="Total" amount={grandTotal} />
 
       <ButtonPrimary
-        text="Order Now"
         mt={4}
         mb={2}
         me={0}
         disabled={orders.length > 0 ? false : true}
         onClick={onSubmitOrder}
-      />
+      >
+        Order Now
+      </ButtonPrimary>
     </div>
   );
 }

@@ -5,7 +5,7 @@ function ButtonCategory({ text = "", active = false, onClick }) {
   return (
     <>
       {active ? (
-        <ButtonPrimary text={text} onClick={onClick} />
+        <ButtonPrimary onClick={onClick}>{text}</ButtonPrimary>
       ) : (
         <button
           type="button"

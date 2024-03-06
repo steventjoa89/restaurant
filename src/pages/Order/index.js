@@ -62,16 +62,9 @@ function OrderPage() {
     decrementOrder(menu);
   };
 
-  const onClick = () => { // TODO Refresh page...
+  const onClick = () => { // TODO: Refresh page...
     console.log("refresh page...");
   };
-
-  return (
-    <>
-      <OrderNavbar />
-      <Error onClick={onClick} />
-    </>
-  );
 
   return isLoading ? (
     <Loader />
