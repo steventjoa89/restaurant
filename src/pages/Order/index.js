@@ -62,70 +62,70 @@ function OrderPage() {
     decrementOrder(menu);
   };
 
-  const onClick = () => { // TODO: Refresh page...
-    console.log("refresh page...");
+  const onRefreshPage = () => {
+    window.location.reload();
   };
 
-  return isLoading ? (
-    <Loader />
-  ) : error ? (
+  return (
     <>
       <OrderNavbar />
-      <Error />
-    </>
-  ) : (
-    <>
-      <OrderNavbar />
+      {isLoading ? (
+        <Loader />
+      ) : error ? (
+        <Error onClick={onRefreshPage} />
+      ) : (
+        <>
+          <div
+            className={`flex pt-16 overflow-hidden bg-gray-50 ${
+              orders?.length > 0 ? "mb-14" : "mb-0"
+            } lg:mb-0`}
+          >
+            <div
+              id="main-content"
+              className="relative w-full h-full overflow-y-auto bg-gray-50 lg:mr-80 "
+            >
+              <main className="px-4 pt-6 pb-6">
+                <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+                  {/* Main Menu Categories */}
+                  <OrderMenuCategories
+                    categories={data?.categories}
+                    activeCategory={activeCategory}
+                    onClick={onCategoryClick}
+                  />
 
-      <div
-        className={`flex pt-16 overflow-hidden bg-gray-50 ${
-          orders?.length > 0 ? "mb-14" : "mb-0"
-        } lg:mb-0`}
-      >
-        <div
-          id="main-content"
-          className="relative w-full h-full overflow-y-auto bg-gray-50 lg:mr-80 "
-        >
-          <main className="px-4 pt-6 pb-6">
-            <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
-              {/* Main Menu Categories */}
-              <OrderMenuCategories
-                categories={data?.categories}
-                activeCategory={activeCategory}
-                onClick={onCategoryClick}
-              />
-
-              {/* Main Menu Items */}
-              {(filteredData || data?.menu)?.map((menu, i) => (
-                <OrderMenuCard
-                  key={i}
-                  menu={menu}
-                  orders={orders}
-                  onIncrementOrder={onIncrementOrder}
-                  onDecrementOrder={onDecrementOrder}
-                  showMenuInfo={onShowMenuInfo}
-                  // showMenuModalInfo={showMenuModalInfo}
-                />
-              ))}
+                  {/* Main Menu Items */}
+                  {(filteredData || data?.menu)?.map((menu, i) => (
+                    <OrderMenuCard
+                      key={i}
+                      menu={menu}
+                      orders={orders}
+                      onIncrementOrder={onIncrementOrder}
+                      onDecrementOrder={onDecrementOrder}
+                      showMenuInfo={onShowMenuInfo}
+                      // showMenuModalInfo={showMenuModalInfo}
+                    />
+                  ))}
+                </div>
+              </main>
             </div>
-          </main>
-        </div>
-      </div>
+          </div>
 
-      {/* Desktop Sidebar Order Screen */}
-      <OrderSidebar />
+          {/* Desktop Sidebar Order Screen */}
+          <OrderSidebar />
 
-      {/* Mobile Bottombar Order Screen */}
-      <OrderBottombar />
+          {/* Mobile Bottombar Order Screen */}
+          <OrderBottombar />
 
-      <ModalMenuInfo
-        isModalOpen={isModalOpen}
-        toggleModal={toggleModal}
-        modalMenuInfo={modalMenuInfo}
-        orders={orders}
-        onIncrementOrder={onIncrementOrder}
-        onDecrementOrder={onDecrementOrder}
-      />
+          <ModalMenuInfo
+            isModalOpen={isModalOpen}
+            toggleModal={toggleModal}
+            modalMenuInfo={modalMenuInfo}
+            orders={orders}
+            onIncrementOrder={onIncrementOrder}
+            onDecrementOrder={onDecrementOrder}
+          />
+        </>
+      )}
     </>
   );
 }
