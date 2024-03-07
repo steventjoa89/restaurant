@@ -1,3 +1,5 @@
+import { isNullOrBlank } from "../utils/stringUtils";
+
 const Modal = ({
   isOpen,
   onClose,
@@ -24,7 +26,11 @@ const Modal = ({
             onClick={onClose}
           ></div>
           <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all w-11/12 sm:w-3/5 max-h-[95vh] sm:max-h-[95vh] flex flex-col">
-            <div className="bg-white p-5 flex-shrink-0">
+            <div
+              className={`bg-white ${
+                isNullOrBlank(title) ? "px-5 pt-3" : "p-5"
+              } flex-shrink-0`}
+            >
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-bold">{title}</h3>
                 <button

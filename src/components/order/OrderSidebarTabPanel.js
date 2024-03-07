@@ -35,7 +35,6 @@ function OrderSidebarTabPanel({
           ))
         )}
       </div>
-      {/* TODO: Ordered Items */}
       <div
         className={`${
           activeTab === 1 ? "block" : "hidden"

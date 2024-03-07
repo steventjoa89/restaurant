@@ -4,13 +4,20 @@ import ButtonPrimary from "../ButtonPrimary";
 import Modal from "../Modal";
 import OrderCard from "./OrderCard";
 import OrderSidebarPaymentSummary from "./OrderSidebarPaymentSummary";
+import useOrderedStore from "../../store/client/useOrderedStore";
+import OrderSidebarTab from "./OrderSidebarTab";
+import { TAB_NAMES } from "../../data/info";
+import OrderSidebarTabPanel from "./OrderSidebarTabPanel";
 
 function OrderBottombar() {
   const { orders, incrementOrder, decrementOrder, deleteOrder } =
     useOrderStore();
+  const { ordered } = useOrderedStore();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
+    setActiveTab(0);
     setIsModalOpen(!isModalOpen);
   };
 
@@ -24,9 +31,16 @@ function OrderBottombar() {
     deleteOrder(menu);
   };
 
+  // Change Tab Handler
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTabClick = (tabIndex) => {
+    setActiveTab(tabIndex);
+  };
+
   return (
     <>
-      {orders?.length > 0 && (
+      {(orders?.length > 0 || ordered?.length > 0) && (
         <div className="lg:hidden fixed bottom-0 left-0 w-full z-50 py-3 flex items-center justify-center bg-white border-t border-gray-300 shadow-xl">
           <ButtonPrimary
             additionalClassName="flex-grow ms-4 me-4"
@@ -37,24 +51,26 @@ function OrderBottombar() {
         </div>
       )}
 
-      <Modal
-        isOpen={isModalOpen}
-        onClose={toggleModal}
-        isMobileModal={true}
-        title="My Orders"
-      >
+      {/* TODO: button order nownya juga muncul di tab 2 */}
+      <Modal isOpen={isModalOpen} onClose={toggleModal} isMobileModal={true}>
         {/* Body */}
-        <div>
-          {orders.map((order, i) => (
-            <OrderCard
-              key={i}
-              {...order}
-              onIncOrder={() => onIncrementOrder(order)}
-              onDecOrder={() => onDecrementOrder(order)}
-              onDelOrder={() => onDeleteOrder(order)}
-            />
-          ))}
-        </div>
+        <>
+          {/* TAB */}
+          <OrderSidebarTab
+            tabNames={TAB_NAMES}
+            activeTab={activeTab}
+            handleTabClick={handleTabClick}
+          />
+          <OrderSidebarTabPanel
+            tabNames={TAB_NAMES}
+            activeTab={activeTab}
+            orders={orders}
+            onIncrementOrder={onIncrementOrder}
+            onDecrementOrder={onDecrementOrder}
+            onDeleteOrder={onDeleteOrder}
+            ordered={ordered}
+          />
+        </>
         {/* Footer */}
         <div className="flex flex-row justify-center w-full">
           <OrderSidebarPaymentSummary orders={orders} isModalView={true} />

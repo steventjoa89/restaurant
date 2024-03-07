@@ -4,13 +4,12 @@ import useOrderStore from "../../store/client/useOrderStore";
 import OrderSidebarTab from "./OrderSidebarTab";
 import OrderSidebarTabPanel from "./OrderSidebarTabPanel";
 import useOrderedStore from "../../store/client/useOrderedStore";
+import { TAB_NAMES } from "../../data/info";
 
 function OrderSidebar() {
   const { orders, incrementOrder, decrementOrder, deleteOrder } =
     useOrderStore();
   const { ordered } = useOrderedStore();
-
-  const [activeTab, setActiveTab] = useState(0);
 
   const onIncrementOrder = (menu) => {
     incrementOrder(menu);
@@ -23,7 +22,8 @@ function OrderSidebar() {
   };
 
   // Change Tab Handler
-  const tabNames = ["my-order", "ordered"];
+  const [activeTab, setActiveTab] = useState(0);
+
   const handleTabClick = (tabIndex) => {
     setActiveTab(tabIndex);
   };
@@ -35,12 +35,12 @@ function OrderSidebar() {
     >
       {/* TAB */}
       <OrderSidebarTab
-        tabNames={tabNames}
+        tabNames={TAB_NAMES}
         activeTab={activeTab}
         handleTabClick={handleTabClick}
       />
       <OrderSidebarTabPanel
-        tabNames={tabNames}
+        tabNames={TAB_NAMES}
         activeTab={activeTab}
         orders={orders}
         onIncrementOrder={onIncrementOrder}

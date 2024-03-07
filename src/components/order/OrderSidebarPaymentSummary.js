@@ -30,7 +30,7 @@ function OrderSidebarPaymentSummary({ orders, isModalView = false }) {
     }
   };
 
-  return (
+  return (  // {/* TODO: button order nownya juga muncul di tab 2 + harganya.... => di sesuaikan */}
     <div
       className={`justify-center w-full ${
         isModalView ? "p-1" : "p-4"
