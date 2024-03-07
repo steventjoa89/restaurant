@@ -9,13 +9,20 @@ import OrderBottombar from "../../components/order/OrderBottombar";
 import Loader from "../../components/Loader";
 import ModalMenuInfo from "../../components/ModalMenuInfo";
 import Error from "../../components/error/Error";
+import useOrderedStore from "../../store/client/useOrderedStore";
+import OrderMenuPagination from "../../components/order/OrderMenuPagination";
+import { TOTAL_ITEM_IN_PAGE } from "../../data/info";
 
 function OrderPage() {
   const { isLoading, error, data } = useGetAllMenu();
   const { orders, incrementOrder, decrementOrder } = useOrderStore();
+  const { ordered } = useOrderedStore();
 
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredData, setFilteredData] = useState(null);
+
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(0);
 
   // Menu Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -77,7 +84,7 @@ function OrderPage() {
         <>
           <div
             className={`flex pt-16 overflow-hidden bg-gray-50 ${
-              orders?.length > 0 ? "mb-14" : "mb-0"
+              orders?.length > 0 || ordered?.length > 0 ? "mb-14" : "mb-0"
             } lg:mb-0`}
           >
             <div
@@ -94,18 +101,28 @@ function OrderPage() {
                   />
 
                   {/* Main Menu Items */}
-                  {(filteredData || data?.menu)?.map((menu, i) => (
-                    <OrderMenuCard
-                      key={i}
-                      menu={menu}
-                      orders={orders}
-                      onIncrementOrder={onIncrementOrder}
-                      onDecrementOrder={onDecrementOrder}
-                      showMenuInfo={onShowMenuInfo}
-                      // showMenuModalInfo={showMenuModalInfo}
-                    />
-                  ))}
+                  {(filteredData || data?.menu)
+                    ?.slice(
+                      currentPage * TOTAL_ITEM_IN_PAGE,
+                      (currentPage + 1) * TOTAL_ITEM_IN_PAGE
+                    )
+                    .map((menu, i) => (
+                      <OrderMenuCard
+                        key={i}
+                        menu={menu}
+                        orders={orders}
+                        onIncrementOrder={onIncrementOrder}
+                        onDecrementOrder={onDecrementOrder}
+                        showMenuInfo={onShowMenuInfo}
+                        // showMenuModalInfo={showMenuModalInfo}
+                      />
+                    ))}
                 </div>
+                <OrderMenuPagination
+                  totalItems={(filteredData || data?.menu)?.length}
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                />
               </main>
             </div>
           </div>
