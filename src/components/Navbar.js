@@ -1,7 +1,7 @@
 import React from "react";
-import { RESTAURANT_LOGO_ADDRESS_URL, RESTAURANT_NAME } from "../../data/info";
+import { RESTAURANT_LOGO_ADDRESS_URL, RESTAURANT_NAME } from "../data/info";
 
-function OrderNavbar() {
+function Navbar() {
   return (
     <nav className="fixed z-30 w-full bg-white border-b border-gray-200">
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -24,4 +24,4 @@ function OrderNavbar() {
   );
 }
 
-export default OrderNavbar;
+export default Navbar;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useGetAllMenu } from "../../store/server/features/order/queries";
 import useOrderStore from "../../store/client/useOrderStore";
 import OrderSidebar from "../../components/order/OrderSidebar";
-import OrderNavbar from "../../components/order/OrderNavbar";
+import Navbar from "../../components/Navbar";
 import OrderMenuCard from "../../components/order/OrderMenuCard";
 import OrderMenuCategories from "../../components/order/OrderMenuCategories";
 import OrderBottombar from "../../components/order/OrderBottombar";
@@ -75,7 +75,7 @@ function OrderPage() {
 
   return (
     <>
-      <OrderNavbar />
+      <Navbar />
       {isLoading ? (
         <Loader />
       ) : error ? (
