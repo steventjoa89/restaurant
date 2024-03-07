@@ -50,7 +50,11 @@ function OrderSidebar() {
       />
 
       <div className="flex-none">
-        <OrderSidebarPaymentSummary orders={orders} ordered={ordered} />
+        <OrderSidebarPaymentSummary
+          orders={orders}
+          ordered={ordered}
+          handleTabClick={handleTabClick}
+        />
       </div>
     </aside>
   );

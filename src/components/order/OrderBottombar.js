@@ -75,6 +75,7 @@ function OrderBottombar() {
             orders={orders}
             ordered={ordered}
             isModalView={true}
+            handleTabClick={handleTabClick}
           />
         </div>
       </Modal>

@@ -39,6 +39,10 @@ const useOrderStore = create((set) => ({
         orders: state.orders.filter((order) => order.id !== item.id),
       };
     }),
+  clearOrders: () =>
+    set(() => ({
+      orders: [],
+    })),
 }));
 
 export default useOrderStore;

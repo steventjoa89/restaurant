@@ -2,9 +2,19 @@ import React from "react";
 import ButtonPrimary from "../ButtonPrimary";
 import OrderPriceInfoRow from "./OrderPriceInfoRow";
 import { useAddOrder } from "../../store/server/features/order/mutation";
+import { toast } from "react-toastify";
+import useOrderedStore from "../../store/client/useOrderedStore";
+import useOrderStore from "../../store/client/useOrderStore";
 
-function OrderSidebarPaymentSummary({ orders, ordered, isModalView = false }) {
+function OrderSidebarPaymentSummary({
+  orders,
+  ordered,
+  handleTabClick,
+  isModalView = false,
+}) {
   const addOrdersMutation = useAddOrder(); // Place new order
+  const { addOrdered } = useOrderedStore();
+  const { clearOrders } = useOrderStore();
 
   const subTotal = (orders ?? [])
     .concat(ordered ?? [])
@@ -18,14 +28,18 @@ function OrderSidebarPaymentSummary({ orders, ordered, isModalView = false }) {
   const onSubmitOrder = async () => {
     if (orders && orders.length > 0) {
       try {
-        await addOrdersMutation.mutateAsync(orders);
-        console.log("Orders submitted successfully");
-        // Handle success, e.g., show a success message
+        const response = await addOrdersMutation.mutateAsync(orders);
+        // Append response to ordered
+        addOrdered(response);
+        // Remove everything from orders
+        clearOrders();
+        // Display toast message
+        toast.success("Orders placed.");
+        // Set Tab into Ordered List
+        handleTabClick(1);
       } catch (error) {
+        toast.error("Failed to submit orders.");
         console.error("Failed to submit orders:", error);
-        // Handle error, e.g., show an error message
-        // TODO: Error handling => TOAST
-        // ON SUCCESS, DELETE TOMBOL DELETENYA..., jadiin status
       }
     }
   };
