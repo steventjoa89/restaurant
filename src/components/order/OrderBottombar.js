@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import useOrderStore from "../../store/client/useOrderStore";
 import ButtonPrimary from "../ButtonPrimary";
 import Modal from "../Modal";
-import OrderCard from "./OrderCard";
 import OrderSidebarPaymentSummary from "./OrderSidebarPaymentSummary";
 import useOrderedStore from "../../store/client/useOrderedStore";
 import OrderSidebarTab from "./OrderSidebarTab";
@@ -51,7 +50,6 @@ function OrderBottombar() {
         </div>
       )}
 
-      {/* TODO: button order nownya juga muncul di tab 2 */}
       <Modal isOpen={isModalOpen} onClose={toggleModal} isMobileModal={true}>
         {/* Body */}
         <>
@@ -73,7 +71,11 @@ function OrderBottombar() {
         </>
         {/* Footer */}
         <div className="flex flex-row justify-center w-full">
-          <OrderSidebarPaymentSummary orders={orders} isModalView={true} />
+          <OrderSidebarPaymentSummary
+            orders={orders}
+            ordered={ordered}
+            isModalView={true}
+          />
         </div>
       </Modal>
     </>

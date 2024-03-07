@@ -3,13 +3,13 @@ import ButtonPrimary from "../ButtonPrimary";
 import OrderPriceInfoRow from "./OrderPriceInfoRow";
 import { useAddOrder } from "../../store/server/features/order/mutation";
 
-function OrderSidebarPaymentSummary({ orders, isModalView = false }) {
-  const addOrdersMutation = useAddOrder();
+function OrderSidebarPaymentSummary({ orders, ordered, isModalView = false }) {
+  const addOrdersMutation = useAddOrder(); // Place new order
 
-  const subTotal = orders.reduce(
-    (total, order) => total + order.price * order.qty,
-    0
-  );
+  const subTotal = (orders ?? [])
+    .concat(ordered ?? [])
+    .reduce((total, order) => total + order.price * order.qty, 0);
+
   const taxFee = (subTotal * 10) / 100;
   const serviceFee = ((subTotal + taxFee) * 5) / 100;
   const grandTotal = subTotal + taxFee + serviceFee;
@@ -30,7 +30,7 @@ function OrderSidebarPaymentSummary({ orders, isModalView = false }) {
     }
   };
 
-  return (  // {/* TODO: button order nownya juga muncul di tab 2 + harganya.... => di sesuaikan */}
+  return (
     <div
       className={`justify-center w-full ${
         isModalView ? "p-1" : "p-4"
@@ -48,8 +48,9 @@ function OrderSidebarPaymentSummary({ orders, isModalView = false }) {
         me={0}
         disabled={orders.length > 0 ? false : true}
         onClick={onSubmitOrder}
+        label={orders.length > 0 ? orders.length : undefined}
       >
-        Order Now
+        Place Order
       </ButtonPrimary>
     </div>
   );

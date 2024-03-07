@@ -10,6 +10,7 @@ function ButtonPrimary({
   onClick,
   rounded = false,
   additionalClassName = "",
+  label = undefined,
   children,
 }) {
   const pY = `py-${py}`;
@@ -29,6 +30,11 @@ function ButtonPrimary({
       }`}
     >
       {children}
+      {label && (
+        <span className="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-black bg-white rounded-full">
+          {label}
+        </span>
+      )}
     </button>
   );
 } // hover:bg-yellow-500 - focus:ring-yellow-300
